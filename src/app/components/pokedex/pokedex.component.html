@@ -1,0 +1,69 @@
+<div class="container mt-4">
+  <ul ngbNav #nav="ngbNav" class="nav nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink class="nav-link">Pokémons</a>
+      <ng-template ngbNavContent>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            [(ngModel)]="newPokemonName"
+            class="form-control"
+            placeholder="Nom du Pokémon"
+          />
+          <button class="btn btn-primary" (click)="addPokemon()">
+            Ajouter
+          </button>
+        </div>
+
+        <div class="pokemon-list mt-3">
+          <app-pokemon-item
+            *ngFor="let pokemon of pokemons"
+            [pokemon]="pokemon"
+            (delete)="onDelete($event)"
+            (select)="selectPokemon($event)"
+            [class.selected-pokemon]="selectedPokemon?.id === pokemon.id"
+            class="mb-2 pokemon-item"
+          >
+          </app-pokemon-item>
+        </div>
+      </ng-template>
+    </li>
+
+    <li ngbNavItem>
+      <a ngbNavLink class="nav-link">Top Pokémons</a>
+      <ng-template ngbNavContent>
+        <div class="pokemon-list mt-3">
+          <app-pokemon-item
+            *ngFor="let pokemon of topPokemons"
+            [pokemon]="pokemon"
+            [canRemove]="false"
+            [class.selected-pokemon]="selectedPokemon?.id === pokemon.id"
+            class="mb-2 pokemon-item"
+          >
+          </app-pokemon-item>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav"></div>
+
+  <div *ngIf="selectedPokemon" class="pokemon-details mt-4 p-3 border">
+    <h5>Pokémon {{ selectedPokemon.id }}</h5>
+    <div class="mb-2">
+      <label>Nom</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedPokemon.name"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-2">
+      <label>Sexe</label>
+      <select [(ngModel)]="selectedPokemon.gender" class="form-control">
+        <option value="Mâle">Mâle</option>
+        <option value="Femelle">Femelle</option>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.pokemon-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: #0000ff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-item.selected-pokemon {
+  background-color: yellow;
+  color: #000;
+}
+
+.pokemon-item .btn {
+  background-color: #87ceeb;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pokemon-item .btn:hover {
+  background-color: #5fb3cc;
+}
+
+.pokemon-name {
+  flex-grow: 1;
+  font-weight: bold;
+}

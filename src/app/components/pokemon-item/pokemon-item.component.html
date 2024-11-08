@@ -1,0 +1,10 @@
+<div class="pokemon-item" (click)="onSelect()">
+  <span class="pokemon-name flex-grow-1">{{ pokemon.name }}</span>
+  <button
+    *ngIf="canRemove"
+    class="btn btn-danger btn-sm ms-auto"
+    (click)="remove(); $event.stopPropagation()"
+  >
+    Supprimer
+  </button>
+</div>
